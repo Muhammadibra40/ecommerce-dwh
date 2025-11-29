@@ -29,7 +29,7 @@ ecommerce-dwh/
 ├── EDA.sql                       # SQL exploratory data analysis queries
 ├── main.py                       # Entry point to run the ETL pipeline
 ├── requirements.txt              # Python dependencies
-├── .env                          # Environment variables (⚠️ DO NOT COMMIT)
+├── .env                          # Environment variables
 ├── .gitignore                    # Git ignore rules
 └── README.md                     # This file
 ```
@@ -101,11 +101,11 @@ The pipeline executes the following steps:
 
 ## Key Features
 
-✅ **Data Validation**: Detects pricing anomalies & invalid records (logged to `logs/pricing_anomalies.csv`)  
-✅ **Batch Processing**: Loads data in 1000-row batches for performance  
-✅ **Error Handling**: Comprehensive try-catch with rollback on failures  
-✅ **Dimension Management**: MERGE operations to handle incremental updates  
-✅ **Logging**: Pipeline progress & data quality metrics printed to console  
+ **Data Validation**: Detects pricing anomalies & invalid records (logged to `logs/pricing_anomalies.csv`)  
+ **Batch Processing**: Loads data in 1000-row batches for performance  
+ **Error Handling**: Comprehensive try-catch with rollback on failures  
+ **Dimension Management**: MERGE operations to handle incremental updates  
+ **Logging**: Pipeline progress & data quality metrics printed to console  
 
 ## Testing & Exploration
 
@@ -121,7 +121,7 @@ jupyter notebook E-Commerce Sales Cleansing.ipynb
 sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -132,11 +132,11 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 
 ## Possible Extensions
 
-- ✨ Automated scheduling (Task Scheduler / Airflow / Azure Data Factory)
-- 📈 BI dashboards (Power BI / Tableau integration)
-- 🔍 Additional data sources (inventory, marketing, customer behavior)
-- ✅ Unit tests & CI/CD pipeline
-- 📊 Advanced analytics models (RFM, clustering, forecasting)
+-  Automated scheduling (Task Scheduler / Airflow / Azure Data Factory)
+-  BI dashboards (Power BI / Tableau integration)
+-  Additional data sources (inventory, marketing, customer behavior)
+-  Unit tests & CI/CD pipeline
+-  Advanced analytics models (RFM, clustering, forecasting)
 
 ## Contributing
 
@@ -155,5 +155,5 @@ Ensure the pipeline runs successfully before submitting PRs.
 
 For questions, please contact me on:
 
-- 📧 **Email**: [migibra678@gmail.com](mailto:migibra678@gmail.com)
-- 💼 **LinkedIn**: [Muhammad Ibrahim](https://www.linkedin.com/in/muhammad-ibrahim-093293218/)
+- **Email**: [migibra678@gmail.com](mailto:migibra678@gmail.com)
+- **LinkedIn**: [Muhammad Ibrahim](https://www.linkedin.com/in/muhammad-ibrahim-093293218/)
