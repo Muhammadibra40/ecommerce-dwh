@@ -1,0 +1,40 @@
+invoice_no,stock_code,description,quantity,invoice_date,unit_price,customer_id,country,price_issue
+536569,M,Manual,1,2010-12-01 15:35:00,1.25,16274,United Kingdom,inconsistent prices
+536569,M,Manual,1,2010-12-01 15:35:00,18.95,16274,United Kingdom,inconsistent prices
+537140,M,Manual,1,2010-12-05 12:53:00,0.42,12748,United Kingdom,inconsistent prices
+537140,M,Manual,1,2010-12-05 12:53:00,0.85,12748,United Kingdom,inconsistent prices
+537804,M,Manual,12,2010-12-08 13:17:00,2.95,12748,United Kingdom,inconsistent prices
+537804,M,Manual,12,2010-12-08 13:17:00,0.19,12748,United Kingdom,inconsistent prices
+538807,M,Manual,1,2010-12-14 12:06:00,20.0,17194,United Kingdom,inconsistent prices
+538807,M,Manual,1,2010-12-14 12:06:00,5.0,17194,United Kingdom,inconsistent prices
+539102,21181,PLEASE ONE PERSON METAL SIGN,144,2010-12-16 10:37:00,1.53,16029,United Kingdom,inconsistent prices
+539102,21181,PLEASE ONE PERSON METAL SIGN,144,2010-12-16 10:37:00,1.65,16029,United Kingdom,inconsistent prices
+545332,M,Manual,1,2011-03-01 15:52:00,376.5,12352,Norway,inconsistent prices
+545332,M,Manual,1,2011-03-01 15:52:00,280.05,12352,Norway,inconsistent prices
+545332,M,Manual,1,2011-03-01 15:52:00,183.75,12352,Norway,inconsistent prices
+548813,M,Manual,1,2011-04-04 13:03:00,162.6,12744,Singapore,inconsistent prices
+548813,M,Manual,1,2011-04-04 13:03:00,2382.92,12744,Singapore,inconsistent prices
+548813,M,Manual,1,2011-04-04 13:03:00,239.3,12744,Singapore,inconsistent prices
+548813,M,Manual,1,2011-04-04 13:03:00,1252.95,12744,Singapore,inconsistent prices
+559535,M,Manual,1,2011-07-10 12:16:00,3.75,17841,United Kingdom,inconsistent prices
+559535,M,Manual,1,2011-07-10 12:16:00,0.85,17841,United Kingdom,inconsistent prices
+567424,M,Manual,2,2011-09-20 11:16:00,0.19,16369,United Kingdom,inconsistent prices
+567424,M,Manual,2,2011-09-20 11:16:00,0.85,16369,United Kingdom,inconsistent prices
+567656,22469,HEART OF WICKER SMALL,2,2011-09-21 14:40:00,1.63,14096,United Kingdom,inconsistent prices
+567656,22469,HEART OF WICKER SMALL,2,2011-09-21 14:40:00,3.29,14096,United Kingdom,inconsistent prices
+568375,BANK CHARGES,Bank Charges,1,2011-09-26 17:01:00,15.0,13405,United Kingdom,inconsistent prices
+568375,BANK CHARGES,Bank Charges,1,2011-09-26 17:01:00,0.001,13405,United Kingdom,inconsistent prices
+569389,M,Manual,1,2011-10-03 16:51:00,152.78,15502,United Kingdom,inconsistent prices
+569389,M,Manual,1,2011-10-03 16:51:00,32.22,15502,United Kingdom,inconsistent prices
+569389,M,Manual,1,2011-10-03 16:51:00,120.0,15502,United Kingdom,inconsistent prices
+570488,23217,LAUREL HEART ANTIQUE SILVER,1,2011-10-10 17:12:00,2.46,14096,United Kingdom,inconsistent prices
+570488,23217,LAUREL HEART ANTIQUE SILVER,1,2011-10-10 17:12:00,2.5,14096,United Kingdom,inconsistent prices
+571751,M,Manual,1,2011-10-19 11:18:00,3949.32,12744,Singapore,inconsistent prices
+571751,M,Manual,1,2011-10-19 11:18:00,2118.74,12744,Singapore,inconsistent prices
+575632,M,Manual,1,2011-11-10 13:44:00,40.46,12473,Germany,inconsistent prices
+575632,M,Manual,1,2011-11-10 13:44:00,424.06,12473,Germany,inconsistent prices
+575632,M,Manual,1,2011-11-10 13:44:00,549.34,12473,Germany,inconsistent prices
+550193,PADS,PADS TO MATCH ALL CUSHIONS,1,2011-04-15 09:27:00,0.001,13952,United Kingdom,zero after rounding
+561226,PADS,PADS TO MATCH ALL CUSHIONS,1,2011-07-26 10:13:00,0.001,15618,United Kingdom,zero after rounding
+568200,PADS,PADS TO MATCH ALL CUSHIONS,1,2011-09-25 14:58:00,0.001,16198,United Kingdom,zero after rounding
+568375,BANK CHARGES,Bank Charges,1,2011-09-26 17:01:00,0.001,13405,United Kingdom,zero after rounding
