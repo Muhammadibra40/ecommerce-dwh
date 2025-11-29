@@ -1,10 +1,10 @@
-# E-Commerce Data Warehouse (ecommerce-dwh)
+# E-Commerce Data Warehouse
 
-## 📘 Overview  
+## Overview  
 **ecommerce-dwh** is a data warehousing project that consolidates and transforms e-commerce sales data into a structured, analytics-ready format.  
 It provides a complete ETL pipeline: data ingestion → cleansing → transformation → dimensional modeling → analytics storage.
 
-## 🏗️ Architecture
+## Architecture
 
 The project follows a **star schema** design with:
 - **Fact Table**: `fact_sales` (transactional records)
@@ -12,7 +12,7 @@ The project follows a **star schema** design with:
 - **Staging Table**: `raw_sales` (raw data before transformation)
 - **Transformation Table**: `cleaned_sales` (cleansed data)
 
-## 📁 Repository Structure  
+## Repository Structure  
 
 ```
 ecommerce-dwh/
@@ -21,7 +21,7 @@ ecommerce-dwh/
 │   ├── pipeline.py              # Main ETL pipeline class
 │   └── config.py                # Configuration & environment variables
 ├── data/
-│   └── data.csv                 # Raw input data file
+│   └── online_retail_data.csv   # Raw input data file
 ├── logs/
 │   └── pricing_anomalies.csv    # Data quality issues detected during load
 ├── DB_DWH_DDL.sql               # Database schema & table definitions
@@ -34,14 +34,14 @@ ecommerce-dwh/
 └── README.md                     # This file
 ```
 
-## 🔧 Prerequisites  
+## Prerequisites  
 
 - **Python 3.8+**
 - **SQL Server 2016+** (with ODBC Driver 17)
 - **ODBC Driver 17 for SQL Server** installed
 - Python packages (see `requirements.txt`)
 
-## 📦 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the repository
 ```bash
@@ -79,14 +79,14 @@ DB_NAME=ECommerceAnalytics
 DATA_PATH=data/data.csv
 ```
 
-⚠️ **Security**: Never commit `.env` with real credentials. Add to `.gitignore`.
+ **Security**: Never commit `.env` with real credentials. Add to `.gitignore`.
 
 ### 6. Run the ETL pipeline
 ```bash
 python main.py
 ```
 
-## 🔄 ETL Pipeline Flow
+## ETL Pipeline Flow
 
 The pipeline executes the following steps:
 
@@ -99,7 +99,7 @@ The pipeline executes the following steps:
 
 **Output**: Success/failure status + execution time logged to console
 
-## 📊 Key Features
+## Key Features
 
 ✅ **Data Validation**: Detects pricing anomalies & invalid records (logged to `logs/pricing_anomalies.csv`)  
 ✅ **Batch Processing**: Loads data in 1000-row batches for performance  
@@ -107,7 +107,7 @@ The pipeline executes the following steps:
 ✅ **Dimension Management**: MERGE operations to handle incremental updates  
 ✅ **Logging**: Pipeline progress & data quality metrics printed to console  
 
-## 🧪 Testing & Exploration
+## Testing & Exploration
 
 ### Run exploratory analysis
 ```bash
@@ -130,7 +130,7 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 | "Connection refused" | Verify SQL Server is running & ODBC Driver 17 is installed |
 | Data not inserted | Check `logs/pricing_anomalies.csv` for rejected records |
 
-## 📚 Possible Extensions
+## Possible Extensions
 
 - ✨ Automated scheduling (Task Scheduler / Airflow / Azure Data Factory)
 - 📈 BI dashboards (Power BI / Tableau integration)
@@ -138,7 +138,7 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 - ✅ Unit tests & CI/CD pipeline
 - 📊 Advanced analytics models (RFM, clustering, forecasting)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Please:
 
@@ -150,10 +150,10 @@ Contributions welcome! Please:
 
 Ensure the pipeline runs successfully before submitting PRs.
 
-## 📝 License
 
-MIT License — see LICENSE file for details
+## Contact
 
-## 📧 Contact
+For questions, please contact me on:
 
-For questions or issues, please open a GitHub issue or contact the maintainer.
+- 📧 **Email**: [migibra678@gmail.com](mailto:migibra678@gmail.com)
+- 💼 **LinkedIn**: [Muhammad Ibrahim](https://www.linkedin.com/in/muhammad-ibrahim-093293218/)
