@@ -17,7 +17,7 @@ The project follows a **star schema** design with:
 ```
 ecommerce-dwh/
 ├── src/
-│   ├── __init__.py              # Package initialization
+│   ├
 │   ├── pipeline.py              # Main ETL pipeline class
 │   └── config.py                # Configuration & environment variables
 ├── data/
@@ -76,7 +76,7 @@ Create `.env` file in the root directory:
 ```env
 DB_SERVER=your_sql_server_name
 DB_NAME=ECommerceAnalytics
-DATA_PATH=data/data.csv
+DATA_PATH=data/online_retail_data.csv
 ```
 
  **Security**: Never commit `.env` with real credentials. Add to `.gitignore`.
