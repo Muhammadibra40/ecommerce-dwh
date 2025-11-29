@@ -1,100 +1,159 @@
-Here’s a professional README.md draft for your repository **ecommerce-dwh**. Feel free to copy, paste, and tweak as needed.
-
-```markdown
 # E-Commerce Data Warehouse (ecommerce-dwh)
 
 ## 📘 Overview  
-**ecommerce-dwh** is a data warehousing project aimed at consolidating and transforming e-commerce data into a structured format for analytics and reporting.  
-It includes data ingestion, cleansing, transformation, and storage logic — enabling you to derive business insights, perform analytics, or build dashboards on top of the clean data model.
+**ecommerce-dwh** is a data warehousing project that consolidates and transforms e-commerce sales data into a structured, analytics-ready format.  
+It provides a complete ETL pipeline: data ingestion → cleansing → transformation → dimensional modeling → analytics storage.
 
-## 🧰 Repository Contents  
+## 🏗️ Architecture
+
+The project follows a **star schema** design with:
+- **Fact Table**: `fact_sales` (transactional records)
+- **Dimension Tables**: `dim_customers`, `dim_products`, `dim_time` (descriptive attributes)
+- **Staging Table**: `raw_sales` (raw data before transformation)
+- **Transformation Table**: `cleaned_sales` (cleansed data)
+
+## 📁 Repository Structure  
 
 ```
-
-/data/                 # raw data files / source datasets
-/logs/                 # logs generated during ETL / data processing
-/src/                  # source scripts (e.g. Python code) for data processing / transformations
-DB_DWH_DDL.sql         # SQL script defining the data warehouse schema & table definitions
-E-Commerce Sales Cleansing.ipynb  # Jupyter notebook for initial data cleaning & exploration
-EDA.sql                # SQL script / queries for exploratory data analysis
-main.py                # main entry-point to run the ETL / data pipeline
-requirements.txt       # Python dependencies
-README.md              # this documentation file
-.env                   # environment variables file (e.g. database credentials — should be ignored in production)
-
-````
-
-> 💡 Note: `.env` should be included in `.gitignore` if it contains sensitive credentials or configuration.
+ecommerce-dwh/
+├── src/
+│   ├── __init__.py              # Package initialization
+│   ├── pipeline.py              # Main ETL pipeline class
+│   └── config.py                # Configuration & environment variables
+├── data/
+│   └── data.csv                 # Raw input data file
+├── logs/
+│   └── pricing_anomalies.csv    # Data quality issues detected during load
+├── DB_DWH_DDL.sql               # Database schema & table definitions
+├── E-Commerce Sales Cleansing.ipynb  # Data exploration & analysis notebook
+├── EDA.sql                       # SQL exploratory data analysis queries
+├── main.py                       # Entry point to run the ETL pipeline
+├── requirements.txt              # Python dependencies
+├── .env                          # Environment variables (⚠️ DO NOT COMMIT)
+├── .gitignore                    # Git ignore rules
+└── README.md                     # This file
+```
 
 ## 🔧 Prerequisites  
 
-- Python 3.x  
-- A SQL database (as defined in `DB_DWH_DDL.sql`)  
-- Required Python packages — installable via `requirements.txt`  
-- (Optional) Jupyter if you want to run the data-cleansing/notebook script
+- **Python 3.8+**
+- **SQL Server 2016+** (with ODBC Driver 17)
+- **ODBC Driver 17 for SQL Server** installed
+- Python packages (see `requirements.txt`)
 
-## 🚀 How to Use / Run the Project
+## 📦 Installation & Setup
 
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/Muhammadibra40/ecommerce-dwh.git
-   cd ecommerce-dwh
-````
+### 1. Clone the repository
+```bash
+git clone https://github.com/Muhammadibra40/ecommerce-dwh.git
+cd ecommerce-dwh
+```
 
-2. (Optional) Create a virtual environment and activate it
+### 2. Create and activate virtual environment
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # for Unix / macOS
-   venv\Scripts\activate      # for Windows
-   ```
-3. Install dependencies
+# macOS / Linux
+python3 -m venv venv
+source venv/bin/activate
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Configure your database credentials (e.g. in `.env` — but don’t commit real credentials)
-5. Run the main pipeline
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-   ```bash
-   python main.py
-   ```
-6. (Optional) Use the Jupyter notebook `E-Commerce Sales Cleansing.ipynb` to inspect raw data, cleaning logic, or run exploratory analysis
+### 4. Set up database
+```bash
+# Execute the DDL script in SQL Server to create tables & schema
+sqlcmd -S <your_server> -d <your_database> -i DB_DWH_DDL.sql
+```
 
-## ✅ What this Project Provides
+### 5. Configure environment variables
+Create `.env` file in the root directory:
+```env
+DB_SERVER=your_sql_server_name
+DB_NAME=ECommerceAnalytics
+DATA_PATH=data/data.csv
+```
 
-* A clean, consistent data warehouse schema for e-commerce sales data
-* Full ETL/data-processing pipeline: ingestion → cleaning → transformation → storage
-* Exploratory data analysis (via SQL and Jupyter) for quick insights
-* A foundation to build reports, dashboards, or analytics models on top of the warehouse
+⚠️ **Security**: Never commit `.env` with real credentials. Add to `.gitignore`.
 
-## 📚 Possible Extensions / Future Work
+### 6. Run the ETL pipeline
+```bash
+python main.py
+```
 
-* Add data validation and quality checks (e.g. schema validation)
-* Automate the pipeline (e.g. via scheduler / cron / Airflow)
-* Add more data sources (e.g. user behavior logs, inventory, marketing data)
-* Build downstream analytics or dashboards (e.g. sales trends, customer segmentation)
-* Integrate with BI tools or reporting frameworks
+## 🔄 ETL Pipeline Flow
+
+The pipeline executes the following steps:
+
+1. **Extract** → Read CSV file into pandas DataFrame
+2. **Clean** → Remove duplicates, nulls, invalid prices; standardize formats
+3. **Load** → Insert raw data into `raw_sales` table with batch processing
+4. **Transform** → Execute stored procedure `sp_CleanAndTransferData` to populate `cleaned_sales`
+5. **Dimensions** → Populate `dim_customers`, `dim_products`, `dim_time` tables
+6. **Facts** → Load `fact_sales` with aggregated metrics
+
+**Output**: Success/failure status + execution time logged to console
+
+## 📊 Key Features
+
+✅ **Data Validation**: Detects pricing anomalies & invalid records (logged to `logs/pricing_anomalies.csv`)  
+✅ **Batch Processing**: Loads data in 1000-row batches for performance  
+✅ **Error Handling**: Comprehensive try-catch with rollback on failures  
+✅ **Dimension Management**: MERGE operations to handle incremental updates  
+✅ **Logging**: Pipeline progress & data quality metrics printed to console  
+
+## 🧪 Testing & Exploration
+
+### Run exploratory analysis
+```bash
+# Use Jupyter to explore data before pipeline execution
+jupyter notebook E-Commerce Sales Cleansing.ipynb
+```
+
+### Validate data warehouse
+```bash
+# Execute SQL queries to inspect results
+sqlcmd -S <your_server> -d <your_database> -i EDA.sql
+```
+
+## 🐛 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| "Missing environment variables" | Check `.env` file exists with `DB_SERVER`, `DB_NAME`, `DATA_PATH` |
+| "No results. Previous SQL was not a query" | Ensure stored procedure returns result set (check `sp_CleanAndTransferData`) |
+| "Connection refused" | Verify SQL Server is running & ODBC Driver 17 is installed |
+| Data not inserted | Check `logs/pricing_anomalies.csv` for rejected records |
+
+## 📚 Possible Extensions
+
+- ✨ Automated scheduling (Task Scheduler / Airflow / Azure Data Factory)
+- 📈 BI dashboards (Power BI / Tableau integration)
+- 🔍 Additional data sources (inventory, marketing, customer behavior)
+- ✅ Unit tests & CI/CD pipeline
+- 📊 Advanced analytics models (RFM, clustering, forecasting)
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you’d like to contribute:
+Contributions welcome! Please:
 
-* Fork this repository
-* Create a new branch — e.g. `feature/your-feature-name`
-* Make your changes (scripts, documentation, tests, etc.)
-* Submit a pull request
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make changes & test end-to-end: `python main.py`
+4. Commit with clear messages: `git commit -m "Add feature X"`
+5. Submit a pull request
 
-Please ensure code is clean, commented, and the pipeline still runs end-to-end before submitting a PR.
+Ensure the pipeline runs successfully before submitting PRs.
 
 ## 📝 License
 
-Specify your license here (e.g. MIT License) — or adjust accordingly.
+MIT License — see LICENSE file for details
 
-```
+## 📧 Contact
 
----
-
-If you like — I can also build a full **README + CONTRIBUTING + LICENSE** template set for you (ready-to-copy) — do you want me to generate that now?
-::contentReference[oaicite:0]{index=0}
-```
+For questions or issues, please open a GitHub issue or contact the maintainer.
