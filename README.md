@@ -57,7 +57,9 @@ ecommerce-dwh/
 ├── requirements.txt              # Python dependencies
 ├── .env                          # Environment variables
 ├── .gitignore                    # Git ignore rules
-└── README.md                     # This file
+├── docs/
+│   └── dashboard.png
+├── README.md
 ```
 
 ## Prerequisites  
@@ -156,6 +158,21 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 | "Connection refused" | Verify SQL Server is running & ODBC Driver 17 is installed |
 | Data not inserted | Check `logs/pricing_anomalies.csv` for rejected records |
 
+
+## Dashboard Preview
+
+<p align="center">
+  <img src="docs/dashboard.png" alt="E-commerce Dashboard" width="800"/>
+</p>
+
+The dashboard provides insights into:
+
+- Revenue and order trends over time  
+- Quarterly revenue growth  
+- Customer purchasing behavior (weekend vs weekday)  
+- Top-performing product categories  
+
+Built using **Metabase** on top of the data warehouse.
 
 ## Contact
 
