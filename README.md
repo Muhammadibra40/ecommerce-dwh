@@ -30,6 +30,24 @@ This project addresses these challenges by building a **complete data warehousin
 - Enables fast, reliable, and scalable analytics  
 
 The final output is an **analytics-ready data model** that supports reporting, dashboards, and business decision-making.
+
+
+## Dashboard Preview
+
+<p align="center">
+  <img src="docs/dashboard.png" alt="E-commerce Dashboard" width="800"/>
+</p>
+
+The dashboard provides insights into:
+
+- Revenue and order trends over time  
+- Quarterly revenue growth  
+- Customer purchasing behavior (weekend vs weekday)  
+- Top-performing product categories  
+
+Built using **Metabase** on top of the data warehouse.
+
+
 ## Architecture
 
 The project follows a **star schema** design with:
@@ -202,20 +220,6 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 | Data not inserted | Check `logs/pricing_anomalies.csv` for rejected records |
 
 
-## Dashboard Preview
-
-<p align="center">
-  <img src="docs/dashboard.png" alt="E-commerce Dashboard" width="800"/>
-</p>
-
-The dashboard provides insights into:
-
-- Revenue and order trends over time  
-- Quarterly revenue growth  
-- Customer purchasing behavior (weekend vs weekday)  
-- Top-performing product categories  
-
-Built using **Metabase** on top of the data warehouse.
 
 ## Contact
 
