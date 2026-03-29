@@ -1,3 +1,4 @@
+# Needed Libraries
 from time import time
 from dotenv import load_dotenv
 import pandas as pd
