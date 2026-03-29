@@ -135,6 +135,49 @@ The pipeline executes the following steps:
  **Dimension Management**: MERGE operations to handle incremental updates  
  **Logging**: Pipeline progress & data quality metrics printed to console  
 
+
+ ## Orchestration with Airflow
+
+To make the ETL pipeline production-ready, the workflow is orchestrated using **Apache Airflow**.
+
+Instead of running the pipeline manually via `main.py`, Airflow automates execution, manages dependencies, and provides monitoring capabilities.
+
+### Why Orchestration is Needed
+
+Running the pipeline as a standalone script introduces several limitations:
+
+- Requires **manual execution**, making it unreliable  
+- No **scheduling mechanism** for regular data updates  
+- Lack of **visibility into pipeline execution and failures**  
+- No built-in **retry or failure recovery**  
+- Difficult to scale as the pipeline grows  
+
+### Airflow Solution
+
+Airflow addresses these challenges by:
+
+- **Scheduling** the pipeline (e.g., daily runs)  
+- Managing **task dependencies** in a Directed Acyclic Graph (DAG)  
+- Providing **automatic retries** on failure  
+- Offering a **web-based UI** for monitoring and debugging  
+- Enabling **scalability** for future integrations (e.g., S3, Redshift)
+
+### DAG Workflow
+
+The Airflow DAG orchestrates the pipeline in the following order:
+
+1. **Validate Data** → Ensure input data exists and is accessible  
+2. **Run ETL Pipeline** → Execute the full data processing workflow  
+3. **Completion Logging** → Confirm successful execution  
+
+### Technologies Used
+
+- Apache Airflow  
+- Docker & Docker Compose  
+- Python-based DAGs  
+
+This transforms the project from a simple ETL script into a **reliable, automated data pipeline suitable for production environments**.
+
 ## Testing & Exploration
 
 ### Run exploratory analysis
