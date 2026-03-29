@@ -4,6 +4,32 @@
 **ecommerce-dwh** is a data warehousing project that consolidates and transforms e-commerce sales data into a structured, analytics-ready format.  
 It provides a complete ETL pipeline: data ingestion → cleansing → transformation → dimensional modeling → analytics storage.
 
+## Problem Statement
+
+E-commerce businesses generate large volumes of transactional data daily, including orders, customers, products, and timestamps. However, this raw data is often:
+
+- **Unstructured or inconsistent** (missing values, duplicate records, invalid prices)
+- **Stored in flat files (CSV)** without optimization for analytics
+- **Difficult to query efficiently** for business insights
+- **Not modeled for reporting or BI tools**
+
+As a result, analysts and stakeholders face several challenges:
+
+- Slow and inefficient queries on raw data  
+- Inability to track key metrics such as revenue trends, customer behavior, and product performance  
+- Lack of a centralized, reliable source of truth  
+- High risk of incorrect insights due to poor data quality  
+
+### Solution
+
+This project addresses these challenges by building a **complete data warehousing pipeline** that:
+
+- Cleans and validates raw e-commerce data  
+- Transforms it into a structured format  
+- Loads it into a **star schema data warehouse**  
+- Enables fast, reliable, and scalable analytics  
+
+The final output is an **analytics-ready data model** that supports reporting, dashboards, and business decision-making.
 ## Architecture
 
 The project follows a **star schema** design with:
@@ -129,26 +155,6 @@ sqlcmd -S <your_server> -d <your_database> -i EDA.sql
 | "No results. Previous SQL was not a query" | Ensure stored procedure returns result set (check `sp_CleanAndTransferData`) |
 | "Connection refused" | Verify SQL Server is running & ODBC Driver 17 is installed |
 | Data not inserted | Check `logs/pricing_anomalies.csv` for rejected records |
-
-## Possible Extensions
-
--  Automated scheduling (Task Scheduler / Airflow / Azure Data Factory)
--  BI dashboards (Power BI / Tableau integration)
--  Additional data sources (inventory, marketing, customer behavior)
--  Unit tests & CI/CD pipeline
--  Advanced analytics models (RFM, clustering, forecasting)
-
-## Contributing
-
-Contributions welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Make changes & test end-to-end: `python main.py`
-4. Commit with clear messages: `git commit -m "Add feature X"`
-5. Submit a pull request
-
-Ensure the pipeline runs successfully before submitting PRs.
 
 
 ## Contact
